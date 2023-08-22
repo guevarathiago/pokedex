@@ -13,15 +13,16 @@ import { useParams } from "react-router-dom";
 export default function InfoPage() {
   const [data, setData] = useState([]);
   const parameters = useParams();
+  const url = `https://pokeapi.co/api/v2/pokemon/${parameters.id}`
   console.log(data);
 
   useEffect(() => {
     getPokemons();
   }, []);
 
-  const getPokemons = () => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${parameters.id}`)
+  async function getPokemons() {
+    await axios
+      .get(url)
       .then((res) => setData(res.data))
       .catch((err) => err);
   };
@@ -78,19 +79,31 @@ export default function InfoPage() {
             }}
           >
             <Container sx={{mt:5,width:"90%", ml: -6 }}>
-            <Typography>Category</Typography>
-            {console.log(data.types.map((type) => (<Typography>{type["type"].name}</Typography>)))}
-            <Typography>Height</Typography>
+            <Typography><h2>Category:</h2></Typography>
+            <Box>
+                {data.types?.map((type, index) => {
+             return(
+                 <Typography key={index}>{type["type"].name}</Typography>
+                 ) })} 
+            </Box>
+           <Box>
+           <Typography><h2>Abilities:</h2></Typography>
+            {data.abilities?.map((ability) => {
+             return(
+                 <Typography> {ability["ability"].name}</Typography>
+                 ) })}
+             </Box>
+            <Typography><h2>Height:</h2></Typography>
             <Typography>{data.height}</Typography>
-            <Typography>Weight</Typography>
+            <Typography><h2>Weight:</h2></Typography>
             <Typography>{data.weight}</Typography>
-            <Typography>Skills</Typography>
+            
 
         
             </Container>
             <Avatar
               variant="square"
-              sx={{ mt: 5, minWidth: 100, minHeight: 100 }}
+              sx={{ mr:-5,mb:3, mt: 5, width: 130, height: 130 }}
               alt={data.name}
               src={`https://projectpokemon.org/images/normal-sprite/${data.name}.gif`}
             />

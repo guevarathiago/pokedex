@@ -14,7 +14,8 @@ export default function Cards({ name, sprites, id}) {
   return (
     <Card sx={{margin:3,minWidth:300, minHeight:300, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
       <CardContent sx={{mt:-4}}>
-        <Typography align="center">
+        <Typography align="center" sx={{mt:5, mb:-4}}>{`#${id}`}</Typography>
+        <Typography align="center" sx={{mt:3}}>
           <h1>{name}</h1>
         </Typography>
         <Link to={`/${id}`}>
