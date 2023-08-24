@@ -18,10 +18,11 @@ export default function FavoritesProvider({ children }) {
 
 export function useFavoriteContext() {
    const { favorite, setFavorite } = useContext(FavoritesContext)
+   
 
    function addFavorite(newFavorite) {
     const favoriteRep = favorite.some(item => item.id === newFavorite.id)
-    let newList= [...favorite];
+    let newList = [...favorite];
     if (!favoriteRep) {
         newList.push(newFavorite);
         return setFavorite(newList)
