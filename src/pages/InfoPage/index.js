@@ -46,7 +46,7 @@ export default function InfoPage() {
         {data.name} 
       </Typography>
       <Avatar
-              variant="square"
+              variant="circular"
               sx={{ mr:-5,mb:3, mt: 5, width: 50, height: 50 }}
               alt={data.name}
               src={`https://projectpokemon.org/images/normal-sprite/${data.name}.gif`}
