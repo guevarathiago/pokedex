@@ -3,6 +3,7 @@ import {
   Avatar,
   Box,
   Card,
+  Chip,
   Container,
   Typography,
 } from "@mui/material";
@@ -28,23 +29,41 @@ export default function InfoPage() {
   };
 
   return (
-    <Box>
+    <Container>
+      <Box sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mb: -1
+          }}>
+
       <Typography
         color="secondary"
         variant="h1"
-        sx={{ mt: 5, justifyContent: "center", textAlign: "center" }}
+        sx={{ mr: 2, mt: 5, justifyContent: "center", textAlign: "center" }}
         id="back-to-top-anchor"
-      >
-        POKEMON INFO
+        >
+        {data.name} 
       </Typography>
-      <Container maxWidth="80%">
+      <Avatar
+              variant="square"
+              sx={{ mr:-5,mb:3, mt: 5, width: 50, height: 50 }}
+              alt={data.name}
+              src={`https://projectpokemon.org/images/normal-sprite/${data.name}.gif`}
+              />
+              </Box>
+      
+      <Container sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }} >
         <Card
-          variant="outlined"
           sx={{
             margin: 3,
             mt: 5,
-            minWidth: 500,
-            minHeight: 500,
+            width: "80vh",
+            height:"51vh",
             display: "flex",
             alignItems: "start",
             justifyContent: "start",
@@ -54,17 +73,18 @@ export default function InfoPage() {
             variant="outlined"
             sx={{
               margin: 3,
+              mr:10,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              minWidth: 350,
+               minHeight: 440
             }}
           >
-            <Typography color="secondary" variant="h1" sx={{ mt: 5 }}>
-              {data.name}
-            </Typography>
+            
             <Avatar
-              sx={{ minWidth: 500, minHeight: 500 }}
+              sx={{ minWidth: 350, minHeight: 350 }}
               alt={data.name}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`}
             />
@@ -78,39 +98,36 @@ export default function InfoPage() {
               justifyContent: "flex-end",
             }}
           >
-            <Container sx={{mt:5,width:"90%", ml: -6 }}>
-            <Typography><h2>Category:</h2></Typography>
+            <Container sx={{mt:1,width:"90%", ml: -6 }}>
+            <Typography><h2>Category</h2></Typography>
             <Box>
                 {data.types?.map((type, index) => {
              return(
-                 <Typography key={index}>{type["type"].name}</Typography>
+              <Chip sx={{mr:1}} key={index} label={type["type"].name} variant="outlined" />
+                
                  ) })} 
             </Box>
            <Box>
-           <Typography><h2>Abilities:</h2></Typography>
+           <Typography><h2>Abilities</h2></Typography>
             {data.abilities?.map((ability) => {
              return(
-                 <Typography> {ability["ability"].name}</Typography>
+              <Chip sx={{mr:1}} label={ability["ability"].name} variant="outlined" />
+                 
                  ) })}
              </Box>
-            <Typography><h2>Height:</h2></Typography>
+            <Typography><h2>Height</h2></Typography>
             <Typography>{data.height}</Typography>
-            <Typography><h2>Weight:</h2></Typography>
+            <Typography><h2>Weight</h2></Typography>
             <Typography>{data.weight}</Typography>
             
 
         
             </Container>
-            <Avatar
-              variant="square"
-              sx={{ mr:-5,mb:3, mt: 5, width: 130, height: 130 }}
-              alt={data.name}
-              src={`https://projectpokemon.org/images/normal-sprite/${data.name}.gif`}
-            />
 
           </Container>
         </Card>
       </Container>
-    </Box>
+            
+    </Container>
   );
 }
