@@ -10,6 +10,9 @@ export default function Search({ pokemonFilter }) {
           onChange={(event) => pokemonFilter(event.target.value.toLowerCase())}
           fullWidth
           id="fullWidth"
+          color="primary"
+          sx={{background:"white", borderRadius:"10px"}}
+
         />
       </Box>
     </Container>

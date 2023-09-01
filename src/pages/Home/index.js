@@ -39,7 +39,7 @@ setData(filteredPokemons)
   return (
     <Box >
       <Typography
-        color="secondary"
+        color="white"
         variant="h1"
         sx={{ mt: 5, justifyContent: "center", textAlign: "center" }}
         id="back-to-top-anchor"

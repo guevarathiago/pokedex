@@ -38,7 +38,7 @@ export default function InfoPage() {
           }}>
 
       <Typography
-        color="secondary"
+        color="white"
         variant="h1"
         sx={{ mr: 2, mt: 5, justifyContent: "center", textAlign: "center" }}
         id="back-to-top-anchor"
@@ -47,7 +47,7 @@ export default function InfoPage() {
       </Typography>
       <Avatar
               variant="circular"
-              sx={{ mr:-5,mb:3, mt: 5, width: 50, height: 50 }}
+              sx={{ mr:-5,mb:3, mt: 8, width: 50, height: 50 }}
               alt={data.name}
               src={`https://projectpokemon.org/images/normal-sprite/${data.name}.gif`}
               />
@@ -63,14 +63,14 @@ export default function InfoPage() {
             margin: 3,
             mt: 5,
             width: "80vh",
-            height:"51vh",
+            height:"46vh",
             display: "flex",
             alignItems: "start",
             justifyContent: "start",
           }}
         >
           <Card
-            variant="outlined"
+            variant="elevation"
             sx={{
               margin: 3,
               mr:10,
@@ -79,7 +79,8 @@ export default function InfoPage() {
               alignItems: "center",
               justifyContent: "center",
               minWidth: 350,
-               minHeight: 440
+               minHeight: 440,
+               background:"linear-gradient(grey, white)"
             }}
           >
             
@@ -98,7 +99,7 @@ export default function InfoPage() {
               justifyContent: "flex-end",
             }}
           >
-            <Container sx={{mt:1,width:"90%", ml: -6 }}>
+            <Container sx={{ mt:1,width:"90%", ml: -6 }}>
             <Typography><h2>Category</h2></Typography>
             <Box>
                 {data.types?.map((type, index) => {
