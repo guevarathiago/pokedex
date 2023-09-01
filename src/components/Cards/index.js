@@ -15,9 +15,11 @@ export default function Cards({ name, sprites, id}) {
   const { favorite, addFavorite } = useFavoriteContext();
   const isFavorite = favorite.some((fav) => fav.id === id);
   const icon = !isFavorite? favIcon : unFavIcon;
+  const sxStyle = {margin:3,minWidth:280, minHeight:280, display:"flex", flexDirection:"column", alignItems:"center",
+  justifyContent:"center", background:"rgba(242, 242, 242, 0.25)",'&:hover': {transform: "scale(1.01)"},transition: "transform 0.5s ease" }
+    
 return (
-    <Card variant="elevation" sx={{margin:3,minWidth:280, minHeight:280, display:"flex", flexDirection:"column", alignItems:"center",
-     justifyContent:"center", background:"rgba(242, 242, 242, 0.25)"}}>
+    <Card variant="elevation" sx={sxStyle}>
       <CardContent sx={{mt:-4 }}>
         <Typography align="center" sx={{color:"white",mt:5, mb:-4}}>{`#${id}`}</Typography>
         <Typography align="center" sx={{color:"white", mt:3}}>
